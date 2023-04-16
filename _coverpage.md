@@ -4,7 +4,7 @@
 
 - Stay hungry, stay foolish.
 - Talk is cheap, show me the code.
-- 天不生我李淳罡,剑道万古如长夜 
+- 这世上没有垃圾，只是放错了地方 
 
 <iframe scrolling="no" src="https://tianqiapi.com/api.php?style=tx&skin=gif&align=center" frameborder="0" width="100%" height="25" allowtransparency="true"></iframe>
 
