@@ -1,4 +1,4 @@
-<img src='https://cdn.jsdelivr.net/gh/WangGuibin/MyFilesRepo/images/20210614114348.png' width=200 height=200 style='border-radius:100px'>
+<img src='https://github.com/LiliCode/FlutterStudy/blob/main/assets/buoucat.jpg?raw=true' width=200 height=200 style='border-radius:100px'>
 
 ## FlutterStudy
 
@@ -14,6 +14,6 @@
 
 <!-- 背景色 -->
 <!-- ![color](#fff) -->
-
+<!-- https://cdn.jsdelivr.net/gh/WangGuibin/MyFilesRepo/images/20210614114348.png -->
 
 
