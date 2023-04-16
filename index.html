@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <title>𝙁𝙡𝙪𝙩𝙩𝙚𝙧𝙎𝙩𝙪𝙙𝙮</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Description">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+  <!-- vue支持 -->
+  <script src="./plugins/vue/vue2.js"></script>
+  <link rel="stylesheet" href="./plugins/vue/index.css">
+
+  <!-- ElementUI库 -->
+  <link rel="stylesheet" href="./plugins/ElementUI/index.css">
+  <script src="./plugins/ElementUI/index.js"></script>
+
+  <!-- heti排版css -->
+  <link rel="stylesheet" href="./plugins/heti.min.css">
+
+  <!-- 侧边栏优化 -->
+  <link rel="stylesheet" href="./plugins/sidebar/sidebar-folder.min.css" />
+  <!-- mermaid画图 -->
+  <link rel="stylesheet" href="./plugins/mermaid/mermaid.min.css">
+  <script src="./plugins/mermaid/mermaid.min.js"></script>
+
+  <!-- React渲染支持 -->
+  <!-- <script src="https://cdn.bootcss.com/react/15.6.1/react.js"></script>
+  <script src="https://cdn.bootcss.com/react/15.6.1/react-dom.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script src="//unpkg.com/docsify-demo-box-react/dist/docsify-demo-box-react.min.js"></script> -->
+
+  <!-- 在github上编辑 -->
+  <script src="./plugins/EditOnGithubPlugin.js"></script>
+  <style>
+    /* 导航栏固定 */
+    /* .app-nav {
+      position: fixed;
+      right: 0px;
+      text-align: right;
+      z-index: 10;
+      margin: 25px 60px 0px 0px;
+    } */
+  </style>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script>
+    //mermaid初始化
+    var mermaidNum = 0;
+    mermaid.initialize({ startOnLoad: false });
+
+    //react渲染demo参数
+    // var ReactJsResources = '<scr' + 'ipt src="//cdn.bootcss.com/react/15.6.1/react.js"></scr' + 'ipt>\n' +
+    //   '<scr' + 'ipt src="//cdn.bootcss.com/react/15.6.1/react-dom.js"></scr' + 'ipt>'
+    // var cssResources = '@import url("//cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css");'
+    // var bootCode = 'var globalVariable = "CoderWGB"'
+    // var globalVariable = "CoderWGB"
+    //每个页面底部加上一些东西
+    const footer = function (hook) {
+      var footer = [
+        '<hr/>',
+        '<footer>',
+        '<span><a href="https://github.com/LiliCode/FlutterStudy">𝙁𝙡𝙪𝙩𝙩𝙚𝙧𝙎𝙩𝙪𝙙𝙮</a> &copy;2022.</span>',
+        '<span>本站由 <a href="https://github.com/docsifyjs/docsify" target="_blank">docsify</a>.</span>',
+        '</footer>'
+      ].join('');
+
+      hook.beforeEach(function (html) {
+        return html + '\n\n' + '⏱最后更新于： {docsify-updated} ';
+      });
+      hook.afterEach(function (html) {
+        return html + footer;
+      });
+    };
+
+    window.$docsify = {
+      name: '<p> 𝙁𝙡𝙪𝙩𝙩𝙚𝙧𝙎𝙩𝙪𝙙𝙮 </p> ',
+      repo: 'https://github.com/LiliCode/FlutterStudy',
+      loadNavbar: true,//定制导航栏 
+      loadSidebar: true,
+      subMaxLevel: 3,
+      sidebarDisplayLevel: 1,
+      alias: {
+        "/.*/_sidebar.md": "/_sidebar.md"
+      },
+      auto2top: true,//回到顶部
+      coverpage: true, //封面
+      onlyCover: false,
+      topMargin: 60,
+      themeColor: 'rgb(30,120,255)',//'rgb(0,88,208)',//'#42b983',//'#ff6699',//'#00AEEC',
+      plugins: [
+        footer,
+        EditOnGithubPlugin.create('https://github.com/LiliCode/FlutterStudy/blob/main/'),
+        // DemoBoxReact.create(ReactJsResources, cssResources, bootCode),
+      ],
+      latex: {
+        inlineMath: [['@@', '@@'], ['\\(', '\\)']], // default
+        displayMath: [['$$', '$$']], // default
+      },
+      search: 'auto',
+      search: { //配置搜索栏
+        paths: "auto",
+        placeholder: "搜索",
+        noData: "找不到结果",
+        depth: 2,
+        maxAge: 86400000,
+      },
+      notFoundPage: {
+        '/': '_404.md'
+      },
+      executeScript: true,
+      maxLevel: 6,
+      footer: {
+        copy: 'Stay hungry, stay foolish. Talk is cheap, show me the code. —— <a href="https://www.cnblogs.com/wgb1234/" target="_blank">CoderWGB</a><br/><br/>',
+        pre: '<hr/>',
+        style: 'text-align: left;',
+      },//添加页脚
+      count: {
+        countable: true,
+        fontsize: '0.9em',
+        color: 'rgb(90,90,90)',
+        language: 'chinese',
+        position: "bottom",
+      },
+      tabs: {
+        persist: true,
+        sync: true,
+        theme: 'classic',
+        tabComments: true,
+        tabHeadings: true
+      },
+      formatUpdated: '{YYYY}-{MM}-{DD} {HH}:{mm}',
+      pagination: {
+        previousText: '上一篇',
+        nextText: {
+          '/': '下一篇'
+        },
+        crossChapter: true,
+        crossChapterText: true,
+      },
+      markdown: {
+        renderer: {
+          code: function (code, lang) {
+            if (lang === "mermaid") {
+              return (
+                '<div class="mermaid">' + mermaid.render('mermaid-svg-' + mermaidNum++, code) + "</div>"
+              );
+            }
+            return this.origin.code.apply(this, arguments);
+          }
+        }
+      },
+      // Valine: {
+      //   appId: 'xxx',
+      //   appKey: 'xxx',
+      // },
+      flexibleAlerts: {
+        style: 'flat',//callout | flat
+        note: {
+          label: ""
+        },
+        tip: {
+          label: ""
+        },
+        warning: {
+          label: ""
+        },
+        attention: {
+          label: ""
+        }
+      },
+      copyCode: {
+        buttonText: '复制代码',
+        errorText: '复制失败',
+        successText: '已复制到剪贴板'
+      },
+      progress: {
+        position: "top",
+        color: "var(--theme-color,#42b983)",
+        height: "3px",
+      }
+    }
+  </script>
+  <!-- Docsify v4 -->
+  <script src="./plugins/docsify-v4.min.js"></script>
+  <!-- 搜索 -->
+  <script src="./plugins/docsify-search.min.js"></script>
+  <!-- 执行脚本 -->
+  <script src="./plugins/docsify-external-script.min.js"></script>
+  <!-- 查看大图 -->
+  <script src="./plugins/zoom-image.min.js"></script>
+  <!-- 代码复制 -->
+  <script src="./plugins/docsify-copy-code"></script>
+  <!-- 字数统计 -->
+  <script src="./plugins/countable.js"></script>
+  <!-- tab分栏 -->
+  <script src="./plugins/docsify-tabsv1.min.js"></script>
+  <!-- 分页 -->
+  <script src="./plugins/docsify-pagination.min.js"></script>
+  <!-- 语法高亮支持 -->
+  <script src="./plugins/prism/prism-applescript.min.js"></script>
+  <script src="./plugins/prism/prism-bash.min.js"></script>
+  <script src="./plugins/prism/prism-python.min.js"></script>
+  <script src="./plugins/prism/prism-ruby.min.js"></script>
+  <script src="./plugins/prism/prism-markdown.min.js"></script>
+  <script src="./plugins/prism/prism-swift.min.js"></script>
+  <script src="./plugins/prism/prism-dart.min.js"></script>
+  <script src="./plugins/prism/prism-rust.min.js"></script>
+  <script src="./plugins/prism/prism-json.min.js"></script>
+  <script src="./plugins/prism/prism-jsx.min.js"></script>
+  <script src="./plugins/prism/prism-c.min.js"></script>
+  <script src="./plugins/prism/prism-cpp.min.js"></script>
+  <script src="./plugins/prism/prism-objectivec.min.js"></script>
+
+  <!-- Valine评论插件 -->
+  <!-- <script src='./plugins/Valine.min.js'></script> -->
+  <script src="./plugins/docsify-valine.min.js"></script>
+  <!-- LaTeX 数学公式 -->
+  <script src="./plugins/docsify-latex.min.js"></script>
+  <!-- markdow图片添加说明文字 ![](src desc) 类似这个格式-->
+  <script src="./plugins/docsify-image-caption.min.js"></script>
+  <!-- 侧边栏 (还是目录树体验好一点 先注释了)-->
+  <!-- <script src="./plugins/sidebar.js"></script> -->
+  <!-- 侧边栏优化(目录树结构) -->
+  <script src="./plugins/sidebar/docsify-sidebar-collapse.min.js"></script>
+  <!-- 重点提示 -->
+  <script src="./plugins/docsify-plugin-flexible-alerts.min.js"></script>
+  <!-- 阅读进度 -->
+  <script src="./plugins/progress.min.js"></script>
+
+
+</body>
+
+<!-- 实现离线化 -->
+<script>
+  if (typeof navigator.serviceWorker !== 'undefined') {
+    navigator.serviceWorker.register('./plugins/pwa.js')
+  }
+</script>
+
+</html>
