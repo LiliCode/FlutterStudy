@@ -30,6 +30,7 @@
 - [Flutter 文档](https://flutter.cn/docs)
 - [Flutter 实战教程 (第二版)](https://book.flutterchina.club)
 - [Provider 中文文档](https://github.com/rrousselGit/provider/blob/master/resources/translations/zh-CN/README.md)
+- [GetX 中文文档](https://github.com/jonataslaw/getx/blob/master/README.zh-cn.md)
 
 ## Flutter 组件库
 
