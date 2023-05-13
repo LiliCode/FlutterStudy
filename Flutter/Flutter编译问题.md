@@ -32,4 +32,5 @@
         // 替换后的地址
         private static final String DEFAULT_MAVEN_HOST = "https://storage.flutter-io.cn";
         ```
-    
+
+参考资料地址: <https://www.bilibili.com/read/cv22572083>
