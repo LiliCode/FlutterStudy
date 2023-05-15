@@ -23,8 +23,10 @@
 - [自定义图标](./Flutter/自定义图标.md)
 - [页面状态保持](./Flutter/页面状态保持.md)
 - [命名路由](./Flutter/命名路由.md)
+- [基本动画](./Flutter/基本动画.md)
 - [Flutter编译问题](./Flutter/Flutter编译问题.md)
 - [Flutter和原生代码交互](./Flutter/Flutter和原生代码交互.md)
+
 
 ## 中文文档
 
