@@ -35,7 +35,7 @@
 
 参考资料地址: <https://www.bilibili.com/read/cv22572083>
 
-## Unable to find bundled Java version 解决方法
+## 2. Unable to find bundled Java version 解决方法
 
 如果运行 flutter doctor 发现 Android Studio 有一处错误 Unable to find bundled Java version，解决办法如下：
 
