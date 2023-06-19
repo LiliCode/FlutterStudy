@@ -39,7 +39,7 @@
 
 如果运行 flutter doctor 发现 Android Studio 有一处错误 Unable to find bundled Java version，解决办法如下：
 
-- 如果是 macOS 系统，在 jbr 同目录下创建一个jre目录，然后将 jbr 目录内的全部文件复制一份到 jre 目录下即可。
-- 如果是 Windows 系统，jre目录是存在的，不过里面几乎没东西，可以直接将 jbr 目录内的全部文件复制一份到 jr e目录下即可。
+- 如果是 macOS 系统，在 `jbr` 同目录下创建一个 jre 目录，然后将 jbr 目录内的全部文件复制一份到 jre 目录下即可。
+- 如果是 Windows 系统，`jre` 目录是存在的，不过里面几乎没东西，可以直接将 jbr 目录内的全部文件复制一份到 jre 目录下即可。
 
 然后在终端运行 flutter doctor 查看是否还会报错
