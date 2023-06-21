@@ -53,6 +53,7 @@
 ld: file not found: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/arc/libarclite_iphonesimulator.a
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 ```
+
 从报错信息看，都是在链接库的时候因为找不到静态库(libarclite_iphonesimulator.a/libarclite_iphoneos.a)而报错。利用访达的前往文件夹功能快速来到报错信息中的目录，发现连arc目录都不存在，更不用说静态库文件。
 
 现在可以确定的是Xcode 14.2版本肯定是正常的，那会不会是14.3版本移除了整个arc目录？找到一台还没升级到Xcode 14.3版本的电脑，在同样的路径下，果然存在arc目录。
@@ -65,39 +66,37 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
 在我的项目中，应用最低部署目标是iOS 12.0版本，可能是某个三方库最低目标版本低于 iOS 11.0，于是找了一下找到了 FMDB 这个库，最低版本是 iOS 8.0，如何更改？？？
 
 ### 如何解决
-
     1. 找到 iOS 工程的 Podfile 文件
-    
     2. 找到如下代码
     
-    ```ruby
-    post_install do |installer|
-      installer.pods_project.targets.each do |target|
-        flutter_additional_ios_build_settings(target)
-        # 在这里插入代码
-      end
-    end
-    ```
+        ```ruby
+        post_install do |installer|
+          installer.pods_project.targets.each do |target|
+            flutter_additional_ios_build_settings(target)
+            # 在这里插入代码
+          end
+        end
+        ```
         
     3. 插入以下代码，这里统一设置最低编译版本为 iOS 11.0 （版本根据项目情况来定）
     
-    ```ruby
-    target.build_configurations.each do |config|
-      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.0'
-    end
-    ```
-        
-    4. 最终的代码效果如下所示
-
-    ```ruby
-    post_install do |installer|
-      installer.pods_project.targets.each do |target|
-        flutter_additional_ios_build_settings(target)
+        ```ruby
         target.build_configurations.each do |config|
           config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.0'
         end
-      end
-    end
-    ```
+        ```
+        
+    4. 最终的代码效果如下所示
+
+        ```ruby
+        post_install do |installer|
+          installer.pods_project.targets.each do |target|
+            flutter_additional_ios_build_settings(target)
+            target.build_configurations.each do |config|
+              config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.0'
+            end
+          end
+        end
+        ```
         
     修改完代码之后，重新执行一下 `pod install` 即可解决问题。
