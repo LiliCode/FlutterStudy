@@ -66,37 +66,37 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
 在我的项目中，应用最低部署目标是iOS 12.0版本，可能是某个三方库最低目标版本低于 iOS 11.0，于是找了一下找到了 FMDB 这个库，最低版本是 iOS 8.0，如何更改？？？
 
 ### 如何解决
-    1. 找到 iOS 工程的 `Podfile` 文件。
-    2. 找到如下代码
+1. 找到 iOS 工程的 `Podfile` 文件。
+2. 找到如下代码
+
+    ```ruby
+    post_install do |installer|
+      installer.pods_project.targets.each do |target|
+        flutter_additional_ios_build_settings(target)
+        # 在这里插入代码
+      end
+    end
+    ```
     
-        ```ry
-        post_install do |installer|
-          installer.pods_project.targets.each do |target|
-            flutter_additional_ios_build_settings(target)
-            # 在这里插入代码
-          end
-        end
-        ```
-        
-    3. 插入以下代码，这里统一设置最低编译版本为 iOS 11.0 （版本根据项目情况来定）
+3. 插入以下代码，这里统一设置最低编译版本为 iOS 11.0 （版本根据项目情况来定）
+
+    ```ruby
+    target.build_configurations.each do |config|
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.0'
+    end
+    ```
     
-        ```ry
+4. 最终的代码效果如下所示
+
+    ```ruby
+    post_install do |installer|
+      installer.pods_project.targets.each do |target|
+        flutter_additional_ios_build_settings(target)
         target.build_configurations.each do |config|
           config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.0'
         end
-        ```
-        
-    4. 最终的代码效果如下所示
-
-        ```ry
-        post_install do |installer|
-          installer.pods_project.targets.each do |target|
-            flutter_additional_ios_build_settings(target)
-            target.build_configurations.each do |config|
-              config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.0'
-            end
-          end
-        end
-        ```
+      end
+    end
+    ```
         
     修改完代码之后，重新执行一下 `pod install` 即可解决问题。
