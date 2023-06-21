@@ -68,6 +68,7 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
 
     1. 找到 iOS 工程的 Podfile 文件
     2. 找到如下代码
+    
         ```ruby
         post_install do |installer|
           installer.pods_project.targets.each do |target|
@@ -76,13 +77,17 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
           end
         end
         ```
+        
     3. 插入以下代码，这里统一设置最低编译版本为 iOS 11.0 （版本根据项目情况来定）
+    
         ```ruby
         target.build_configurations.each do |config|
           config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.0'
         end
         ```
+        
     4. 最终的代码效果如下所示
+    
         ```ruby
         post_install do |installer|
           installer.pods_project.targets.each do |target|
@@ -93,4 +98,5 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
           end
         end
         ```
+        
     修改完代码之后，重新执行一下 `pod install` 即可解决问题。
