@@ -100,3 +100,4 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
     ```
         
     修改完代码之后，重新执行一下 `pod install` 即可解决问题。
+> 参考资料： https://blog.csdn.net/crasowas/article/details/129901398
