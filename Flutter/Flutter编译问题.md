@@ -67,9 +67,9 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
 
 ### 如何解决
     1. 找到 iOS 工程的 `Podfile` 文件。
-    2. 找到如下代码。
+    2. 找到如下代码
     
-        ```ruby
+        ```
         post_install do |installer|
           installer.pods_project.targets.each do |target|
             flutter_additional_ios_build_settings(target)
