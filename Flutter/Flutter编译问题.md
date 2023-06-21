@@ -66,8 +66,8 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
 在我的项目中，应用最低部署目标是iOS 12.0版本，可能是某个三方库最低目标版本低于 iOS 11.0，于是找了一下找到了 FMDB 这个库，最低版本是 iOS 8.0，如何更改？？？
 
 ### 如何解决
-    1. 找到 iOS 工程的 Podfile 文件
-    2. 找到如下代码
+    1. 找到 iOS 工程的 `Podfile` 文件。
+    2. 找到如下代码。
     
         ```ruby
         post_install do |installer|
