@@ -100,4 +100,39 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
     ```
         
     修改完代码之后，重新执行一下 `pod install` 即可解决问题。
-> 参考资料： https://blog.csdn.net/crasowas/article/details/129901398
+    > 参考资料： https://blog.csdn.net/crasowas/article/details/129901398
+
+## `AndroidManifext.xml` 文件中 `android: name` 是什么
+
+1. 有如下 xml 文件，路径: `/android/app/main/AndroidManifext.xml`
+
+    ```xml
+    <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.skeleton">
+    <application
+        android:label="skeleton"
+        android:name="${applicationName}"
+        android:icon="@mipmap/ic_launcher">
+    ```
+
+
+2. `android: name` 是什么？
+    - Android Application是android应用程序，一个apk就是一个Android Application。每一个 Application 都是由 Activity、service 等 Android 基本组件所组成。 其中，AndroidManifest.xml 中的 application 标签中的 `android:name` 属性 用来设置 activity 属于哪个 Application，默认为 `android.app.Application`。
+
+    - 为了便于个性化开发，也可进行自定义，如:
+
+        ```java
+        public class MyTestApplication extends Application {
+
+        } 
+        ```
+
+        这个类的作用是为了放一些全局的和一些上下文都要用到的变量和方法。
+
+3. android: name 默认值
+
+    该值由 `Flutter Gradle` 插件设置。 它可以有 2 个值：
+
+    - 如果您启用了 `multidex` 并且您的应用程序的 minSdk 小于 20，则此值将为 `io.flutter.app.FlutterMultiDexApplication`。 否则，它将是 `android.app.Application`。
+
+    - 您可以通过设置属性来覆盖此值base-application-name（例如，在您的 android 文件夹的 gradle.properties 中）。
