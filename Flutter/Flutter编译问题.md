@@ -136,3 +136,5 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
     - 如果您启用了 `multidex` 并且您的应用程序的 minSdk 小于 20，则此值将为 `io.flutter.app.FlutterMultiDexApplication`。 否则，它将是 `android.app.Application`。
 
     - 您可以通过设置属性来覆盖此值base-application-name（例如，在您的 android 文件夹的 gradle.properties 中）。
+    
+    > 参考资料: https://stackoverflow.com/questions/70957389/what-does-the-applicationname-in-flutter-androidmanifest-xml-means
