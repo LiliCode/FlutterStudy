@@ -102,7 +102,7 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
     修改完代码之后，重新执行一下 `pod install` 即可解决问题。
     > 参考资料： https://blog.csdn.net/crasowas/article/details/129901398
 
-## `AndroidManifext.xml` 文件中 `android: name` 是什么
+## 4. `AndroidManifext.xml` 文件中 `android: name` 是什么
 
 1. 有如下 xml 文件，路径: `/android/app/main/AndroidManifext.xml`
 
