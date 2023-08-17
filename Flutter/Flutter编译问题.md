@@ -117,7 +117,7 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
 
 
 2. `android: name` 是什么？
-    - Android Application是android应用程序，一个apk就是一个Android Application。每一个 Application 都是由 Activity、service 等 Android 基本组件所组成。 其中，AndroidManifest.xml 中的 application 标签中的 `android:name` 属性 用来设置 activity 属于哪个 Application，默认为 `android.app.Application`。
+    - Android Application是android应用程序，一个apk就是一个Android Application。每一个 Application 都是由 Activity、service 等 Android 基本组件所组成。 其中，AndroidManifest.xml 中的 application 标签中的 `android:name` 属性，用来设置 activity 属于哪个 Application，默认为 `android.app.Application`。
 
     - 为了便于个性化开发，也可进行自定义，如:
 
@@ -136,5 +136,40 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
     - 如果您启用了 `multidex` 并且您的应用程序的 minSdk 小于 20，则此值将为 `io.flutter.app.FlutterMultiDexApplication`。 否则，它将是 `android.app.Application`。
 
     - 您可以通过设置属性来覆盖此值base-application-name（例如，在您的 android 文件夹的 gradle.properties 中）。
+
+    - 如果 build.gradle 文件的 `defaultConfig` 设置了 `manifestPlaceholders` 占位符属性，可以使用如下方式增加一个默认值，否则会报错。
+
+        ```gradle
+        defaultConfig {
+            // 其他配置 ...
+            manifestPlaceholders = [
+                // 其他配置 ...
+
+                applicationName : "android.app.Application",
+            ]
+        }
+        ```
     
     > 参考资料: https://stackoverflow.com/questions/70957389/what-does-the-applicationname-in-flutter-androidmanifest-xml-means
+
+    > `manifestPlaceholders`的使用请参考: https://blog.csdn.net/chuyouyinghe/article/details/129951838
+
+## 5. App requires Multidex support in flutter?
+
+    如图所示
+
+    ![](./images/multidex_error_reason.png)
+    
+    如果运行项目报错，需要支持 `Multidex` 可以在终端中运行 `flutter run`，然后会自动执行，如下图所示:
+
+    ![](./images/multidex_solution.png)
+
+    这样就会自动在 `android` 目录生成相关的文件。
+
+## 6. What went wrong: [ ] Execution failed for task ':qr_code_scanner:parseDebugLocalResources'
+    
+    - 错误原因
+     如果你导入 `qr_code_scanner` 框架遇到以上问题，错误原因：PlatformAttrTransform 执行失败：/Users/xxx/Library/Android/sdk/platforms/android-32/android.jar ，这是因为没有找到 `android.jar` 这个文件。
+
+    - 解决方法
+     可以删除 `/Users/xxx/Library/Android/sdk/platforms/` 文件夹下面的 `android-32` 文件夹，然后重新运行项目会自动生成一个 `android-32` 文件夹。
