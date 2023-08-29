@@ -173,3 +173,14 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
 
     - 解决方法
      可以删除 `/Users/xxx/Library/Android/sdk/platforms/` 文件夹下面的 `android-32` 文件夹，然后重新运行项目会自动生成一个 `android-32` 文件夹。
+
+## 7. 获取依赖报错: Got socket error trying to find package coverage at http://pub.dartlang.org
+
+再添加了新的第三方库，获取依赖报错，意思是连接https://pub.dartlang.org配置dart包失败，需要配置国内镜像，Linux 和 macOS 中的解决办法如下所示: 
+
+```shell
+export PUB_HOSTED_URL=https://pub.flutter-io.cn 
+export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
+```
+
+然后重新执行 `flutter pub get` 获取依赖
