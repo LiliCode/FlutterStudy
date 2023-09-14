@@ -28,7 +28,7 @@
 - [Flutter和原生代码交互](./Flutter/Flutter和原生代码交互.md)
 - [App支持http请求](./Flutter/iOS和Android支持http请求.md)
 - [页面传值](./Flutter/页面传值.md)
-
+- [奇淫技巧](./Flutter/Flutter奇淫技巧.md)
 
 
 ## 中文文档
