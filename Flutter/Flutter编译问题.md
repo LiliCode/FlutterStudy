@@ -184,3 +184,11 @@ export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 ```
 
 然后重新执行 `flutter pub get` 获取依赖
+
+## 8. Xcode 运行出错 (“CFBundleExecutable” is not specified)
+
+解决方法：
+
+1. 打开 `Xcode 工程文件` -> `Build Settings`
+2. 找到 `Packaging` 选项
+3. 找到 `Generate info.plist file` 选项，将其值设置为 `YES` 
