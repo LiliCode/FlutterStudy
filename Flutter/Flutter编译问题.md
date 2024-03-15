@@ -208,6 +208,8 @@ Sandbox: rsync.samba(12698) deny(1) file-write-create /Users/shrek/Library/Devel
 
 新建安卓项目，运行出现报错：Exception in thread "main" java.util.zip.ZipException: zip END header not found at ，这主要是由于用户文件夹中的 `.gradle` 文件夹中存在弯曲或不完整的文件。只需找到它并删除它，然后再次运行它，但这次请确保您已连接到互联网以重新下载它。
 
+>原文链接: https://stackoverflow.com/questions/68131529/android-studio-throws-exception-while-running-flutter-app/68855690#68855690
+
 运行如下命令:
 
 ```shell
