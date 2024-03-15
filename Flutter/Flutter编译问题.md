@@ -203,3 +203,16 @@ Sandbox: rsync.samba(12698) deny(1) file-write-create /Users/shrek/Library/Devel
 ![]("https://developer.apple.com/forums/content/attachment/fb5c4e33-9603-4c87-9f39-aab81475dbf9" "title=Screenshot 2023-06-07 at 00.48.08.png;width=1429;height=232")
 
 解决办法：在 `Build Settings` 中找到 `User script sandboxing` 选项，设置成 NO
+
+## 10. 安卓项目运行出现 Exception in thread "main" java.util.zip.ZipException: zip END header not found at  的错误
+
+新建安卓项目，运行出现报错：Exception in thread "main" java.util.zip.ZipException: zip END header not found at ，这主要是由于用户文件夹中的 `.gradle` 文件夹中存在弯曲或不完整的文件。只需找到它并删除它，然后再次运行它，但这次请确保您已连接到互联网以重新下载它。
+
+运行如下命令:
+
+```shell
+cd ~
+rm -rf .gradle
+```
+
+然后重新运行项目即可。
